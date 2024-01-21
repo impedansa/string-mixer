@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/mix")
+@RequestMapping("/api/strings/")
 public class MixStringsController {
     private final MixStringsService mixStringsService;
 
@@ -17,9 +17,9 @@ public class MixStringsController {
         this.mixStringsService = mixStringsService;
     }
 
-    @PostMapping
+    @PostMapping("/mix")
     MixStringsResponseDTO mixStrings(@Valid @RequestBody MixStringsRequestDTO requestDTO) {
-        String result = this.mixStringsService.mix(requestDTO.getFirst(), requestDTO.getSecond());
+        String result = this.mixStringsService.mixStrings(requestDTO.getFirst(), requestDTO.getSecond());
         return new MixStringsResponseDTO(result);
     }
 }

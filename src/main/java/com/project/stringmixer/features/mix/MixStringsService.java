@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MixStringsService {
 
-    public String mix(String... strings) {
+    public String mixStrings(String... strings) {
         return "";
     }
 }
