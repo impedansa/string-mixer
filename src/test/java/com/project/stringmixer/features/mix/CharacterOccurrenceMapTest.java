@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CharacterOccurrenceMapTest {
     @Test
-    void incrementCharacterCount_singleString_singleOccurrence() {
+    void testIncrementCharacterCountWithOneStringAndOneCharacterOccurrence() {
         CharacterOccurrenceMap characterOccurrenceMap = new CharacterOccurrenceMap('a');
         characterOccurrenceMap.incrementCharacterCount(1);
 
@@ -18,7 +18,7 @@ public class CharacterOccurrenceMapTest {
     }
 
     @Test
-    void incrementCharacterCount_singleString_multipleOccurrences() {
+    void testIncrementCharacterCountWithOneStringAndMultipleCharacterOccurrences() {
         CharacterOccurrenceMap characterOccurrenceMap = new CharacterOccurrenceMap('b');
         for (int i = 0; i < 3; i++) {
             characterOccurrenceMap.incrementCharacterCount(1);
@@ -30,7 +30,7 @@ public class CharacterOccurrenceMapTest {
     }
 
     @Test
-    public void incrementCharacterCount_multipleStrings_differentNumberOfOccurrences() {
+    public void testIncrementCharacterCountWithTwoStringsAndDifferentNumberOfCharacterOccurrences() {
         CharacterOccurrenceMap characterOccurrenceMap = new CharacterOccurrenceMap('c');
         characterOccurrenceMap.incrementCharacterCount(1);
         for (int i = 0; i < 3; i++) {
@@ -44,7 +44,7 @@ public class CharacterOccurrenceMapTest {
     }
 
     @Test
-    void incrementCharacterCount_multipleStrings_SameNumberOfOccurrences() {
+    void testIncrementCharacterCountWithTwoStringsAndSameNumberOfCharacterOccurrences() {
         CharacterOccurrenceMap characterOccurrenceMap = new CharacterOccurrenceMap('d');
         for (int i = 0; i < 3; i++) {
             characterOccurrenceMap.incrementCharacterCount(1);
@@ -56,7 +56,7 @@ public class CharacterOccurrenceMapTest {
     }
 
     @Test
-    public void toString_allMaxesEqual() {
+    public void testToStringWhenAllMaximumCharacterOccurrencesAreEqual() {
         CharacterOccurrenceMap characterOccurrenceMap = new CharacterOccurrenceMap('e');
         characterOccurrenceMap.setMaxOccurrence(3);
         characterOccurrenceMap.setAllMaxesEqual(true);
@@ -66,19 +66,30 @@ public class CharacterOccurrenceMapTest {
     }
 
     @Test
-    public void toString_allMaxesNotEqual() {
+    public void testToStringWhenMaximumCharacterOccurrenceIsInFirstString() {
         CharacterOccurrenceMap characterMap = new CharacterOccurrenceMap('f');
+        characterMap.setMaxOccurrence(3);
+        characterMap.setMaxStringId(1);
+        characterMap.setAllMaxesEqual(false);
+        String result = characterMap.toString();
+
+        assertEquals("1:fff", result);
+    }
+
+    @Test
+    public void testToStringWhenMaximumCharacterOccurrenceIsInSecondString() {
+        CharacterOccurrenceMap characterMap = new CharacterOccurrenceMap('g');
         characterMap.setMaxOccurrence(5);
         characterMap.setMaxStringId(2);
         characterMap.setAllMaxesEqual(false);
         String result = characterMap.toString();
 
-        assertEquals("2:fffff", result);
+        assertEquals("2:ggggg", result);
     }
 
     @Test
-    public void toString_maxOccurrenceIsZero() {
-        CharacterOccurrenceMap characterMap = new CharacterOccurrenceMap('g');
+    public void testToStringWhenMaximumCharacterOccurrenceIsZero() {
+        CharacterOccurrenceMap characterMap = new CharacterOccurrenceMap('h');
         characterMap.setMaxOccurrence(0);
         characterMap.setMaxStringId(0);
         String result = characterMap.toString();
