@@ -12,9 +12,9 @@ public class CharacterOccurrenceMapTest {
         CharacterOccurrenceMap characterOccurrenceMap = new CharacterOccurrenceMap('a');
         characterOccurrenceMap.incrementCharacterCount(1);
 
-        assertEquals(-1, characterOccurrenceMap.getMaxOccurrence());
-        assertEquals(-1, characterOccurrenceMap.getMaxStringId());
-        assertTrue(characterOccurrenceMap.isAllMaxesEqual());
+        assertEquals(1, characterOccurrenceMap.getMaxOccurrence());
+        assertEquals(1, characterOccurrenceMap.getMaxStringId());
+        assertFalse(characterOccurrenceMap.isAllMaxesEqual());
     }
 
     @Test
@@ -24,9 +24,9 @@ public class CharacterOccurrenceMapTest {
             characterOccurrenceMap.incrementCharacterCount(1);
         }
 
-        assertEquals(-1, characterOccurrenceMap.getMaxOccurrence());
-        assertEquals(-1, characterOccurrenceMap.getMaxStringId());
-        assertTrue(characterOccurrenceMap.isAllMaxesEqual());
+        assertEquals(3, characterOccurrenceMap.getMaxOccurrence());
+        assertEquals(1, characterOccurrenceMap.getMaxStringId());
+        assertFalse(characterOccurrenceMap.isAllMaxesEqual());
     }
 
     @Test

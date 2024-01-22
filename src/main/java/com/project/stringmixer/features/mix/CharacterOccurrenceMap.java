@@ -3,7 +3,6 @@ package com.project.stringmixer.features.mix;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -29,19 +28,10 @@ public class CharacterOccurrenceMap {
         allMaxesEqual = stringIdCharacterCountMap.values()
                 .stream()
                 .distinct()
-                .count() == 1;
+                .count() == 1 && stringIdCharacterCountMap.size() > 1;
     }
 
     private void findMaxOccurrences() {
-        Collection<Integer> maxOccurrences = stringIdCharacterCountMap.values();
-
-        //If there is only one string or the character is not present in all strings, no need to evaluate further.
-        if (maxOccurrences.size() == 1 || maxOccurrences.stream().anyMatch(val -> val < 1)) {
-            maxOccurrence = -1;
-            maxStringId = -1;
-            return;
-        }
-
         Map.Entry<Integer, Integer> maxEntry = Collections.max(stringIdCharacterCountMap.entrySet(),
                 Comparator.comparingInt(Map.Entry::getValue));
         maxOccurrence = maxEntry.getValue();
