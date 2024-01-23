@@ -1,0 +1,40 @@
+{
+  "info": {
+    "_postman_id": "fc70dab4-fc0f-40b1-bead-aa05333966f2",
+    "name": "Mix Strings",
+    "description": "# Mix Strings API\n\nThis Postman collection provides a request to interact with the \"Mix Strings\" API. The API is designed to mix two input strings and return a result based on specific rules.\n\n## Collection Contents\n\n### Mix Strings\n\n**Request:**\n\n*   **Method:** POST\n*   **Endpoint:** `{{base_url}}/api/strings/mix`\n*   **Body:** `{   \"first\": \"my&friend&Paul has heavy hats! &\",   \"second\": \"my friend John has many many friends &\"   }`\n*   **Description:** Produces a string in which each lowercase letter of `first` or `second` appears as many times as its maximum if this maximum is strictly greater than 1; these letters are prefixed by the number of the string where they appear with their maximum value and :. If the maximum is in s1 as well as in s2 the prefix is =:. Resulting substrings are in decreasing order of their length and when they have the same length sorted alphabetically; the different groups are separated by '/'.\n    \n\n**Response:**\n\n*   **Status:** 200 OK\n*   **Body:** `{   \"result\": \"1:mmmmmm/=:nnnnnn/1:aaaa/1:hhh/2:yyy/2:dd/2:ff/2:ii/2:rr/=:ee/=:ss\"   }`\n*   **Description:** Result of the operation.\n    \n\n## Usage\n\n1.  Ensure that the \"Mix Strings\" API server is running.\n2.  Import this collection into Postman.\n3.  Set the appropriate environment variables, such as `base_url`.\n4.  Run the \"Mix Strings\" request with different input strings to observe the results.\n    \n\n## Environment Variables\n\n### `base_url`\n\n*   **Description:** Base URL of the \"Mix Strings\" API.\n*   **Example:** `http://localhost:8080`\n    \n\n## Important Notes\n\n*   Ensure that the API server is running before making requests.\n*   Provide valid input strings in the request body.\n*   Review the API response to understand the result.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "10340929"
+  },
+  "item": [
+    {
+      "name": "Mix Strings",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"first\": \"my&friend&Paul has heavy hats! &\",\n    \"second\": \"my friend John has many many friends &\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/strings/mix",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "strings",
+            "mix"
+          ]
+        },
+        "description": "**Method:** POST\n*   **Endpoint:** `{{base_url}}/api/strings/mix`\n*   **Body:** `{   \"first\": \"my&friend&Paul has heavy hats! &\",   \"second\": \"my friend John has many many friends &\"   }`\n*   **Description:** Produces a string in which each lowercase letter of `first` or `second` appears as many times as its maximum if this maximum is strictly greater than 1; these letters are prefixed by the number of the string where they appear with their maximum value and :. If the maximum is in s1 as well as in s2 the prefix is =:. Resulting substrings are in decreasing order of their length and when they have the same length sorted alphabetically; the different groups are separated by '/'.\n    \n\n**Response:**\n\n*   **Status:** 200 OK\n*   **Body:** `{   \"result\": \"1:mmmmmm/=:nnnnnn/1:aaaa/1:hhh/2:yyy/2:dd/2:ff/2:ii/2:rr/=:ee/=:ss\"   }`\n*   **Description:** Result of the operation.\n"
+      },
+      "response": []
+    }
+  ]
+}
