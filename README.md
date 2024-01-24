@@ -2,8 +2,8 @@
 
 ## Description
 
-[String Mixer](https://github.com/impedansa/string-mixer) is a backend project build using Java and Spring Boot. 
-It provides an algorithm to visualize the differences between two input strings. 
+[String Mixer](https://github.com/impedansa/string-mixer) is a backend project built using Java and Spring Boot. 
+It provides an algorithm to visualise the differences between two input strings. 
 It counts the frequency of lowercase letters (a to z) in each string, and then generates a result string based on specific criteria.
 
 ## Table of Contents
@@ -64,7 +64,7 @@ Request should be structured like this:
 }
 ```
 
-Response:
+Response looks like this:
 ```
 {
     "result": "2:ssssss/2:ttt/=:iii/1:gg"
@@ -81,7 +81,7 @@ The different groups are separated by '`/`'.
 In the result string, substrings are sorted by length in descending order and alphabetically within the same length.
 
 #### Sorting Criteria
-The sorting of substrings in the result string is prioritized based on the following criteria:
+The sorting of substrings in the result string is prioritised based on the following criteria:
 1. **Length of Substrings**:
    * Substrings are sorted in descending order based on their length, determined by the number of occurrences of the letters.
 2. **Prefix Order**:
@@ -98,7 +98,7 @@ The sorting of substrings in the result string is prioritized based on the follo
 * **src/test/java/com/project/stringmixer/features/mix**: Contains test classes for the algorithm and controller.
 
 ### Design Details
-This project follows the Vertical Slice Architecture, an architectural pattern that organizes code around features or functionalities rather than traditional layered architecture. 
+This project follows the Vertical Slice Architecture, an architectural pattern that organises code around features or functionalities rather than traditional layered architecture. 
 In the context of String Mixer, each feature or use case is encapsulated within its own vertical slice. 
 This approach promotes a more modular and maintainable codebase, making it easier to add or modify features without affecting other parts of the system.
 The use of vertical slices enhances the scalability and testability of the codebase, facilitating a more streamlined development process.
@@ -111,8 +111,8 @@ Step by step algorithm implementation and execution:
    It then iterates through each character in both strings, counting the occurrences of lowercase letters (a to z) and storing this information in a `CharacterOccurrenceMap`. 
    This structure keeps track of the maximum occurrence of each character in both strings, as well as the string ID (`1` or `2`) where the maximum occurrence is found.
 
-2. **Sorting Criteria Initialization**
-   * The `CharacterOccurrenceMap` class initializes sorting-related variables such as `maxOccurrence`, `maxStringId`, and `allMaxesEqual`. 
+2. **Sorting Criteria Initialisation**
+   * The `CharacterOccurrenceMap` class initialises sorting-related variables such as `maxOccurrence`, `maxStringId`, and `allMaxesEqual`. 
    These variables will be used to determine the sorting order of the result string.
 
 3. **Incrementing Character Count**
@@ -171,8 +171,8 @@ This testing approach provides an additional layer of validation and ensures tha
 This solution is intentionally designed to be extensible and accommodate the processing of multiple strings with minimal modification.
 The architecture is structured to accommodate future enhancements by abstracting the string mixing logic into a service that can easily be extended.
 The algorithm can seamlessly handle additional input strings without requiring substantial changes to the core logic. 
-To extend the functionality for more input strings, primarily the request DTO needs modification to include the new strings, and the corresponding changes in the controller to accommodate the additional parameters.
-The vertical slice architecture also facilitates the modular organization of features, making it straightforward to add new functionalities without impacting existing components.
+To extend the functionality for more input strings, primarily the request DTO needs modification to include the new strings, and the corresponding changes should be made in the controller to accommodate the additional parameters.
+The vertical slice architecture also facilitates the modular organisation of features, making it straightforward to add new functionalities without impacting existing components.
 This deliberate over-engineering aims to provide a scalable and flexible solution for any future enhancements.
 
 ## FAQ
@@ -183,12 +183,12 @@ This deliberate over-engineering aims to provide a scalable and flexible solutio
 While idempotence is a key characteristic of GET requests, making them ideal for operations that don't cause side effects, the choice to use POST in this case is influenced by the potential variability in the length of string parameters.
 Since there isn't an explicit maximum length defined for the input strings, using POST allows for the flexibility to handle larger amounts of data without being constrained by URL length limitations. 
 POST requests allow for the inclusion of a request body, making it suitable for transmitting data, such as the input strings, in a more robust and scalable manner.
-While GET requests are typically reserved for safe and idempotent operations, the decision to use POST in this context prioritizes practicality and accommodates potential variations in the size of the input data, ensuring a robust and scalable solution.
+While GET requests are typically reserved for safe and idempotent operations, the decision to use POST in this context prioritises practicality and accommodates potential variations in the size of the input data, ensuring a robust and scalable solution.
 
 2. **Why is vertical slice architecture used instead of layered architecture?**
 
     The adoption of vertical slice architecture over the traditional layered architecture is driven by an emphasis on extendability and scalability. 
-Vertical slice architecture organizes the codebase around features or functionalities rather than layers, providing a modular structure that aligns with the project's goal of easily accommodating new features. 
+Vertical slice architecture organises the codebase around features or functionalities rather than layers, providing a modular structure that aligns with the project's goal of easily accommodating new features. 
 This design choice ensures that the addition of functionality is contained within its own slice, minimizing the impact on existing components. 
 The result is a more flexible and maintainable codebase, allowing for seamless integration of new features without disrupting the overall system architecture.
 
@@ -196,8 +196,8 @@ The result is a more flexible and maintainable codebase, allowing for seamless i
     
     The decision to place unit and integration tests in the same package is influenced by the adoption of vertical slice architecture. 
 In a vertical slice architecture, tests for a specific feature or functionality are often grouped together, irrespective of whether they are unit or integration tests. 
-This organization aligns with the modular structure of the codebase, making it easier to locate and manage tests related to a particular vertical slice. 
-It emphasizes a cohesive testing strategy that revolves around the features being tested, contributing to a more intuitive and maintainable testing infrastructure.
+This organisation aligns with the modular structure of the codebase, making it easier to locate and manage tests related to a particular vertical slice. 
+It emphasises a cohesive testing strategy that revolves around the features being tested, contributing to a more intuitive and maintainable testing infrastructure.
 
 4. **Why are there both `@WebMvcTest` and `@SpringBootTest` tests for the controller?**
    
@@ -214,7 +214,7 @@ While parametrized tests can be useful for systematically exploring a broader ra
 Each test case tests a specific scenario, and introducing parameterization might not necessarily improve readability or maintainability in this specific case.
 In situations where we have a larger number of similar test cases or want to explore a more systematic range of inputs, parametrized tests can be beneficial. 
 However, for the current set of tests, the existing approach appears reasonable. 
-It's crucial to prioritize clarity and readability in the code, and only introduce complexity when it brings clear benefits.
+It's crucial to prioritise clarity and readability in the code, and only introduce complexity when it brings clear benefits.
 
 6. **Why wasn't an interface used for the service class?**
 
